@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fitness Club Finder</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-    <header>this is editted by nazi 1383</header>
-    <main>this is editted by amir</main>
-    <footer>this is editted by Amirhossein</footer>
+    <div id="app">
+        <header>
+            <nav>
+                <button @click="currentView = 'home'">Home</button>
+                <button @click="currentView = 'user-profile'">User Profile</button>
+                <button @click="currentView = 'club-profile'">Club Profile</button>
+            </nav>
+        </header>
+        <main>
+            <div v-if="currentView === 'home'">
+                <h1>Welcome to Fitness Club Finder</h1>
+                <p>Find the best fitness clubs near you!</p>
+                <geolocation></geolocation>
+            </div>
+            <component :is="currentView"></component>
+        </main>
+    </div>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
